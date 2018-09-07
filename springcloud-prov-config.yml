@@ -1,0 +1,122 @@
+---
+server:
+  port: 8001
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/dbtest1?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=true
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  application:
+    name: microservicespringcloud-dept
+  profiles: dev_8001
+mybatis:
+  type-aliases-package: com.lgs.prov.mapper
+  mapper-locations: classpath:/mapper/*.xml
+eureka:
+  instance:
+    instance-id: microservicespringcloud-prov-8001
+#    lease-expiration-duration-in-seconds: 6
+#    lease-renewal-interval-in-seconds: 3
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/,http://eureka7001.com:7001/eureka/      #http://localhost:7002/eureka,http://localhost:7003/eureka
+    healthcheck:
+     enabled: true #使用health端点来代替心跳表明服务是否可用，反应到eureka server ui上服务的UP还是DOWN
+feign:
+  hystrix:
+    enabled: true
+---
+server:
+  port: 8002
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/dbtest2?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=true
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  application:
+    name: microservicespringcloud-dept
+  profiles: dev_8002
+mybatis:
+  type-aliases-package: com.lgs.prov.mapper
+  mapper-locations: classpath:/mapper/*.xml
+eureka:
+  instance:
+    instance-id: microservicespringcloud-prov-8002
+#    lease-expiration-duration-in-seconds: 6
+#    lease-renewal-interval-in-seconds: 3
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/,http://eureka7001.com:7001/eureka/
+      #http://localhost:7002/eureka,http://localhost:7003/eureka
+    healthcheck:
+     enabled: true #使用health端点来代替心跳表明服务是否可用，反应到eureka server ui上服务的UP还是DOWN
+feign:
+  hystrix:
+    enabled: true
+---
+server:
+  port: 8003
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/dbtest3?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=true
+    driver-class-name: com.mysql.jdbc.Driver
+    password: root
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  application:
+    name: microservicespringcloud-dept
+  profiles: dev_8003
+mybatis:
+  type-aliases-package: com.lgs.prov.mapper
+  mapper-locations: classpath:/mapper/*.xml
+eureka:
+  instance:
+    instance-id: microservicespringcloud-prov-8003
+#    lease-expiration-duration-in-seconds: 6
+#    lease-renewal-interval-in-seconds: 3
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/,http://eureka7001.com:7001/eureka/
+    healthcheck:
+     enabled: true #使用health端点来代替心跳表明服务是否可用，反应到eureka server ui上服务的UP还是DOWN
+feign:
+  hystrix:
+    enabled: true
+
+
+
+
+
+#    #--------------------------
+#    # 下面为连接池的补充设置，应用到上面所有数据源中
+#    # 初始化大小，最小，最大
+#    spring.datasource.initialSize=5
+#    spring.datasource.minIdle=1
+#    spring.datasource.maxActive=50
+#    # 配置获取连接等待超时的时间
+#    spring.datasource.maxWait=60000
+#    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+#    spring.datasource.timeBetweenEvictionRunsMillis=60000
+#    # 配置一个连接在池中最小生存的时间，单位是毫秒
+#    spring.datasource.minEvictableIdleTimeMillis=300000
+#    spring.datasource.validationQuery=SELECT 1 FROM DUAL
+#    spring.datasource.testWhileIdle=true
+#    spring.datasource.testOnBorrow=false
+#    spring.datasource.testOnReturn=false
+#    # 打开PSCache，并且指定每个连接上PSCache的大小
+#    spring.datasource.poolPreparedStatements=false
+#    #spring.datasource.maxPoolPreparedStatementPerConnectionSize=20
+#    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+#    spring.datasource.filters=stat,wall,log4j
+#    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+#    spring.datasource.connectionProperties=druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#    # 合并多个DruidDataSource的监控数据
+#    #spring.datasource.useGlobalDataSourceStat=true
+
